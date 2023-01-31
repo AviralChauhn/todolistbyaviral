@@ -1,0 +1,277 @@
+import React from 'react'
+
+export default function App() {
+  const students =[
+    ["Name","Subject","Marks"],
+    ["Adfar","React","100"],
+    ["Himanshu","CSS","99"]
+]
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            {students[0].map((items,index)=>{    //to map only first we use index 0 array which contains name subject marks
+            return <th>{item}</th>
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {students.slice(1,students.length).map((item,index)=>{
+            return(
+              <tr>
+                <td>{item[0]}</td>
+                <td>{item[1]}</td>
+                <td>{item[2]}</td>
+              </tr>
+            )
+          })}
+
+        </tbody>
+      </table>
+    </div>
+  )
+}
+import React, { Component } from 'react'
+
+
+
+##setstate addone# add two add three subtract one 
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0,
+    }
+  }
+  render() {
+    const count = this.state.count
+    return (
+      <>
+        <h1>{count}</h1>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>Add One</button>
+        <button onClick={() => this.setState({ count: this.state.count + 2 })}>Add two</button>
+        <button onClick={() => this.setState({ count: this.state.count + 3 })}>Add three</button>
+        <button onClick={() => this.setState({ count: this.state.count - 1})}>subtract one</button>
+      </>
+    )
+  }
+}
+
+
+untrolled form class based
+
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.firstname=React.createRef()
+    this.lastname=React.createRef()
+    this.title=React.createRef()
+    this.country=React.createRef()
+    
+  }
+  submitHandler(event){
+    event.preventDefault()
+    console.log(this.firstname.current.value, this.lastname.current.value, this.title.current.value, this.country.current.value)
+  }
+  render() {
+    return (
+      <div>
+        <h1>Uncontrolled</h1>
+        <form onSubmit={(event)=>{this.submitHandler(event)}}>
+        <input type="text" placeholder="Enter firstname" ref={this.firstname}/> <br /><br />
+        <input type="text" placeholder="Enter your last name" ref={this.lastname}/><br /><br />
+        <input type="text" placeholder="Enter the title" ref={this.title}/> <br /><br />
+        <input type="text" placeholder="Enter your Country" ref={this.country}/> <br /><br />
+        <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+
+uncontrolled fb
+
+
+import React, {useRef} from 'react'
+
+export default function App() {
+  const inputnameref=useRef()
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(inputnameref.current.value)
+  }
+  return (
+    <div>
+    <h1>Uncontrolled FB Component</h1>
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Enter your Name" ref={inputnameref}/> <br /> <br />
+      <button type="submit">Submit</button>  
+      </form>
+    </div>
+  )
+}
+
+controlled with cb
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      name:"",
+      password:"",
+    }
+  }
+  submit(){
+    console.log(this.state)
+  }
+  render() {
+    return (
+      <div>
+        <h1>COntrolled COmponents</h1>
+        <input type="text" placeholder="Enter Name" pnChange={(event)=>{this.setState({name:event.target.value})}}/>
+        <input type="password" placeholder="Enter Password"/>
+        <button onClick={submit()}} type="submit">Submit</button>
+      </div>
+    )
+  }
+}
+
+uncontrolled forms using class based components
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.firstname=React.createRef()
+    this.lastname=React.createRef()
+    this.title=React.createRef()
+    this.country=React.createRef()
+    
+  }
+  submitHandler(event){
+    event.preventDefault()
+    console.log(this.firstname.current.value, this.lastname.current.value, this.title.current.value, this.country.current.value)
+  }
+  render() {
+    return (
+      <div>
+        <h1>Uncontrolled</h1>
+        <form onSubmit={(event)=>{this.submitHandler(event)}}>
+        <input type="text" placeholder="Enter firstname" ref={this.firstname}/> <br /><br />
+        <input type="text" placeholder="Enter your last name" ref={this.lastname}/><br /><br />
+        <input type="text" placeholder="Enter the title" ref={this.title}/> <br /><br />
+        <input type="text" placeholder="Enter your Country" ref={this.country}/> <br /><br />
+        <button type="submit">Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+
+increment decrement counter
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      firstName:"Aviral",
+      data:0,
+    }
+  }
+  doChallenge=()=>{
+    this.setState({
+      data: this.state.data +1
+    })
+  }
+  decrementCounter = () => {
+    this.setState({ data: this.state.data - 1 });
+  }
+
+  shouldComponentUpdate(nextProps,nextState){
+      console.log(nextProps,nextState)
+      console.log(nextState.data)
+      if(nextState.data<=20 && nextState.data>=-20){
+        return true 
+      }
+      else{
+        return false
+      }
+    }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.data}</h1>
+        <button onClick={this.doChallenge}>Increment</button>
+        <button onClick={this.decrementCounter}>Decrement</button>
+      </div>
+    )
+  }
+}
+
+
+***API calling****
+
+
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: #3e8e41;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+`;
+
+function JokeFetcher() {
+  const [joke, setJoke] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getJoke();
+  }, []);
+  const getJoke = async () => {
+    setLoading(true);
+    const res = await fetch(
+      "https://official-joke-api.appspot.com/random_joke"
+    );
+    const data = await res.json();
+    setJoke(data);
+    setLoading(false);
+  };
+  const handleClick = async () => {
+    setLoading(true);
+    await getJoke();
+  };
+  return (
+    <div>
+      <StyledButton onClick={handleClick}>Generate Joke</StyledButton>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          <p>{joke.setup}</p>
+          <p>{joke.punchline}</p>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default JokeFetcher;
